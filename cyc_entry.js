@@ -31,10 +31,14 @@ app.use(expressValidator());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.post('/switchboard', phoneController.switchboard);
+app.get('/switchboard', phoneController.switchboardTestGet);
 app.post('/new_phone_call', phoneController.newCall);
 app.get('/new_phone_call', phoneController.newCallTestGet);
-app.post('/redir_call_for_zip', phoneController.redirectCall);
-app.get('/redir_call_for_zip', phoneController.redirectCallTest);
+
+app.post('/call_house', phoneController.callHouse);
+app.post('/call_senate', phoneController.callSenate);
+app.post('/call_house_and_senate', phoneController.callHouseAndSenate);
 
 // Production error handler
 if (app.get('env') === 'production') {
