@@ -28,7 +28,7 @@ with open('logs_844usa.csv', 'w') as csvfile:
     fieldnames = ['from', 'to', 'status', 'duration', 'direction', 'time']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
-
+    
     for call in calls:
         duration = 0 if call.duration is None else int(call.duration)
         if call.direction == 'inbound':
